@@ -8,7 +8,7 @@ export default function NavbarComponent(): JSX.Element {
   const [background, setBackground] = useState("bg-slate-50 text-black");
   useEffect(() => {
     if (theme === "light") {
-      setBackground("bg-[#1F2937] text-white");
+      setBackground("bg-zinc-950 text-white");
     }else{
         setBackground("bg-slate-50 text-black");
     }
@@ -24,7 +24,7 @@ export default function NavbarComponent(): JSX.Element {
       <section className="flex gap-4 justify-between items-center">
         <ThemeButton />
         <section
-          className={`px-6 py-2 rounded-lg ${background} font-medium text-lg hover:shadow-sm hover:shadow-sky-400`}
+          className={`px-6 py-1 rounded-lg ${background} font-medium text-lg hover:shadow-md hover:shadow-sky-400`}
         >
           <button
             onClick={() => {
