@@ -9,6 +9,8 @@ export default function NavbarComponent(): JSX.Element {
   useEffect(() => {
     if (theme === "light") {
       setBackground("bg-[#1F2937] text-white");
+    }else{
+        setBackground("bg-slate-50 text-black");
     }
   }, [theme]);
 

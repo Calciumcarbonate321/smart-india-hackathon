@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function HeroComponent(): JSX.Element {
   const { theme, setTheme } = useTheme();
-  const [background, setBackground] = useState("");
+  const [background, setBackground] = useState("bg-slate-50 text-black");
   useEffect(() => {
     if (theme === "light") {
       setBackground("bg-zinc-950 text-white");
