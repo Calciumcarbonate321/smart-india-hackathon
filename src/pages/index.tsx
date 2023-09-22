@@ -21,7 +21,7 @@ export default function Home() {
           <meta property="og:type" content="website" />
         </Head>
       <section className="min-h-screen dark:bg-zinc-950">
-        <NavbarComponent />
+        <NavbarComponent buttons={['Login']}/>
         <HeroComponent />
       </section>
     </>
