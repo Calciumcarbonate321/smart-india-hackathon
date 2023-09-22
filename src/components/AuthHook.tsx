@@ -24,7 +24,10 @@ export default function AuthProvider(props: IAuthProps): JSX.Element {
         },
         [supabase],
     );
-    if (loading) {
-        return (<>...Loading</>)
-    } return <>{props.children}</>;
+    
+    if (loading === false){
+        return <>{props.children}</>;
+    }
+    return <>...Loading</>
+    
 }
