@@ -50,13 +50,13 @@ export default function NavbarComponent({ buttons }: NavbarProps): JSX.Element {
           >
             {buttonName === "Alerts" ? (
               // Render a button with an onClick handler for showing/hiding alerts
-              <button className={`px-6 py-1 rounded-lg ${!background} font-medium text-lg hover:bg-slate-200`} ref={alertButtonRef} onClick={toggleAlerts}>{buttonName}</button>
+              <button className={`px-6 py-1 rounded-lg ${!background} font-medium text-lg hover:bg-slate-200 hover:text-black`} ref={alertButtonRef} onClick={toggleAlerts}>{buttonName}</button>
             ) : (buttonName === "Login" || buttonName === ("Signout")) ? (
               // Render a button with an onClick handler for showing/hiding alerts
               <button className={`px-6 py-1 rounded-lg ${background} font-medium text-lg hover:shadow-md hover:shadow-sky-400`}>{buttonName}</button>
             ) :(
               // Render other buttons with navigation behavior
-              <button className={`px-6 py-1 rounded-lg ${!background} font-medium text-lg hover:bg-slate-200`}
+              <button className={`px-6 py-1 rounded-lg ${!background} font-medium text-lg hover:bg-slate-200 hover:text-black`}
                 onClick={() => {
                   router.push(`/auth/${buttonName.toLowerCase()}`);
                 }}
