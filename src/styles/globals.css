@@ -12,3 +12,42 @@
 * {
     scroll-behavior: smooth;
 }
+table {
+    border-radius: 12px;
+    table-layout: auto;
+}
+
+/* :root {
+    background-color: #f4f4f5;
+    color: #0a0a0a;
+}
+
+@layer base {
+    :root {
+        --background: 200 20% 98%;
+        --btn-background: 200 10% 91%;
+        --btn-background-hover: 200 10% 89%;
+        --foreground: 200 50% 3%;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --background: 200 50% 3%;
+            --btn-background: 200 10% 9%;
+            --btn-background-hover: 200 10% 12%;
+            --foreground: 200 20% 96%;
+        }
+    }
+}
+
+input {
+    background-color: #f4f4f5;
+    color: #0a0a0a;
+    border-color: #0c0a09
+}
+
+input[data-theme='dark'] {
+    background-color: #0a0a0a;
+    color: #f4f4f5;
+    border-color: #FFF
+} */

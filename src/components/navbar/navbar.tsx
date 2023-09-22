@@ -1,7 +1,7 @@
 import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import ThemeButton from "./themes/button";
+import ThemeButton from "../themes/button";
 
 export default function NavbarComponent(): JSX.Element {
   const { theme, setTheme } = useTheme();

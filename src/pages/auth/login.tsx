@@ -21,7 +21,7 @@ export default function Login() {
 
     useEffect(
         () => {
-            if (theme === 'dark') {
+            if (theme === 'dark' || theme === 'system') {
                 setDarkBox("bg-zinc-800 shadow-md shadow-slate-500")
                 setWord('light')
             } else if (theme === 'light') {

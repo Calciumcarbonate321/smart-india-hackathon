@@ -10,16 +10,18 @@ export default function TechStackComponent(): JSX.Element {
   const [background, setBackground] = useState("");
   useEffect(() => {
     if (theme === "light") {
-      setBackground("bg-zinc-950 text-white");
+      // setBackground("bg-zinc-950 text-white");
+      setBackground("bg-slate-50 text-black");
     }
 
-    if (theme === "dark") {
-      setBackground("bg-slate-50 text-black");
+    if (theme === "dark" || theme === "system") {
+      // setBackground("bg-slate-50 text-black");s
+      setBackground("bg-zinc-950 text-white");
     }
   }, [theme]);
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center" id="TechStack">
+    <main className={"min-h-screen flex flex-col items-center justify-center " + background} id="TechStack">
       <section className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
         <h2 className="font-bold text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
           Tech Stack

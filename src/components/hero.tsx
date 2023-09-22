@@ -11,7 +11,7 @@ export default function HeroComponent(): JSX.Element {
       setBackground("bg-zinc-950 text-white");
     }
 
-    if (theme === "dark") {
+    if (theme === "dark" || theme === "system") {
       setBackground("bg-slate-50 text-black");
     }
   }, [theme]);
