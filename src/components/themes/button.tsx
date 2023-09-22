@@ -1,5 +1,4 @@
-import { GoSun } from "react-icons/go";
-import { FaRegMoon } from "react-icons/fa";
+import { GoSun, GoMoon } from "react-icons/go";
 import { useTheme } from "next-themes";
 
 export default function ThemeButton() {
@@ -10,7 +9,7 @@ export default function ThemeButton() {
   return (
     <button onClick={ChangeTheme}>
       {theme === "light"
-        ? <FaRegMoon className="text-2xl" />
+        ? <GoMoon className="text-2xl" />
         : <GoSun className="text-2xl" />}
     </button>
   );
