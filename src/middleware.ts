@@ -4,18 +4,17 @@ import supabase from '@smartindia/components/supabase'
 
 export async function middleware(request: NextRequest) {
     const res = NextResponse.next()
-    const {
-        data: { session: user },
-    } = await supabase.auth.getSession()
-
-    if (!user) {
-        return NextResponse.redirect(new URL('/auth/login', request.url))
-    }
+    const session = await supabase.auth.getSession()
+    console.log(request)
+    // if (!user) {
+    //     return NextResponse.redirect(new URL('/auth/login', request.url))
+    // }
     return res
 }
 
 
 // See "Matching Paths" below to learn more
 export const config = {
-    matcher: '/about/:path*',
+    // matcher: '/about/:path*',
+    matcher: '/'
 }

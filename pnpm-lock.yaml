@@ -8,6 +8,12 @@ dependencies:
   '@supabase/auth-helpers-nextjs':
     specifier: ^0.8.1
     version: 0.8.1(@supabase/supabase-js@2.36.0)
+  '@supabase/auth-ui-react':
+    specifier: ^0.4.5
+    version: 0.4.5(@supabase/supabase-js@2.36.0)
+  '@supabase/auth-ui-shared':
+    specifier: ^0.1.7
+    version: 0.1.7(@supabase/supabase-js@2.36.0)
   '@supabase/supabase-js':
     specifier: ^2.36.0
     version: 2.36.0
@@ -194,6 +200,10 @@ packages:
       fastq: 1.15.0
     dev: false
 
+  /@stitches/core@1.2.8:
+    resolution: {integrity: sha512-Gfkvwk9o9kE9r9XNBmJRfV8zONvXThnm1tcuojL04Uy5uRyqg93DC83lDebl0rocZCfKSjUv+fWYtMQmEDJldg==}
+    dev: false
+
   /@supabase/auth-helpers-nextjs@0.8.1(@supabase/supabase-js@2.36.0):
     resolution: {integrity: sha512-ZO/UGDE9oaVXwPL4gpzGu2NpPwfKOgxTUnuK6no51So8Ah9BUuUUsTj+BdZlx7jJoZEIAkHWdRIx65WuQgWAiQ==}
     peerDependencies:
@@ -211,6 +221,27 @@ packages:
     dependencies:
       '@supabase/supabase-js': 2.36.0
       jose: 4.14.6
+    dev: false
+
+  /@supabase/auth-ui-react@0.4.5(@supabase/supabase-js@2.36.0):
+    resolution: {integrity: sha512-p7mZoD/iJKP7KorQ4F/RK4NfWDpXzop+LhMuHxkO5BahD+VpGIxwtykuXfZ0g7rijaKnA1BimdCBTCrV5EWTag==}
+    peerDependencies:
+      '@supabase/supabase-js': ^2.21.0
+    dependencies:
+      '@stitches/core': 1.2.8
+      '@supabase/auth-ui-shared': 0.1.7(@supabase/supabase-js@2.36.0)
+      '@supabase/supabase-js': 2.36.0
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@supabase/auth-ui-shared@0.1.7(@supabase/supabase-js@2.36.0):
+    resolution: {integrity: sha512-ueqyfCHVYX/ioehwL1ErH0+cZwiSzsIfZfhf326yJdDI0XExTKPV4lxPtWT1xx6c8A4FPPmT3kJKQaWs27pxCw==}
+    peerDependencies:
+      '@supabase/supabase-js': ^2.21.0
+    dependencies:
+      '@supabase/supabase-js': 2.36.0
     dev: false
 
   /@supabase/functions-js@2.1.5:
@@ -902,6 +933,14 @@ packages:
     hasBin: true
     dev: false
 
+  /prop-types@15.8.1:
+    resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      react-is: 16.13.1
+    dev: false
+
   /queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: false
@@ -922,6 +961,10 @@ packages:
       react: '*'
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /react-is@16.13.1:
+    resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
     dev: false
 
   /react@18.2.0:

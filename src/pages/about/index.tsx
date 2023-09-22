@@ -1,7 +1,7 @@
-export default function Component(){
+export default function Component() {
     return (
         <>
-        Hello World
+            Hello World
         </>
     )
 }

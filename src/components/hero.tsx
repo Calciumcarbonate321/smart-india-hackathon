@@ -28,7 +28,7 @@ export default function HeroComponent(): JSX.Element {
           system
         </section>
       </section>
-      <section className="flex justify-center py-6">
+      <section className="flex justify-center py-6 border-b-2 border-b-white">
         <button onClick={() => router.push("/auth/login")}>
           <section
             className={`rounded-lg px-8 py-2 text-lg ${background} font-normal tracking-[-0.025em] hover:shadow-md hover:shadow-sky-300`}
