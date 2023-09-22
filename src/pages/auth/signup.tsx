@@ -26,7 +26,6 @@ export default function Login() {
     const router = useRouter()
 
     const SignUpWithSupa = async (username: string, password: string) => {
-        console.log(username, password)
         const res = await supabase.auth.signUp({
             email: username,
             password: password,

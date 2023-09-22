@@ -24,7 +24,7 @@ export default function Login() {
             if (theme === 'dark') {
                 setDarkBox("bg-zinc-800 shadow-md shadow-slate-500")
                 setWord('light')
-            } else {
+            } else if (theme === 'light') {
                 setDarkBox('bg-gray-300 drop-shadow-md')
                 setWord('dark')
             }
@@ -36,7 +36,6 @@ export default function Login() {
             email: username,
             password: password,
         })
-        console.log(res)
         if (res.error) {
             alert(res.error.message)
         }
