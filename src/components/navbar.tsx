@@ -47,12 +47,15 @@ export default function NavbarComponent({ buttons }: NavbarProps): JSX.Element {
         {buttons.map((buttonName) => (
           <section
             key={buttonName} // Make sure to set a unique key for each button
-            className={`px-6 py-1 rounded-lg ${background} font-medium text-lg hover:shadow-md hover:shadow-sky-400`}
+            className={`px-6 py-1 rounded-lg ${!background} font-medium text-lg hover:shadow-md hover:shadow-sky-400`}
           >
             {buttonName === "Alerts" ? (
               // Render a button with an onClick handler for showing/hiding alerts
               <button ref={alertButtonRef} onClick={toggleAlerts}>{buttonName}</button>
-            ) : (
+            ) : buttonName === "Login" || buttonName === ("Signout") ? (
+              // Render a button with an onClick handler for showing/hiding alerts
+              <button ref={alertButtonRef} className={`px-6 py-1 rounded-lg ${background} font-medium text-lg hover:shadow-md hover:shadow-sky-400`} onClick={toggleAlerts}>{buttonName}</button>
+            ) :(
               // Render other buttons with navigation behavior
               <button
                 onClick={() => {

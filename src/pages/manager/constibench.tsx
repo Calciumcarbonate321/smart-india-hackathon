@@ -1,4 +1,3 @@
-import HeroComponent from "@smartindia/components/hero";
 import NavbarComponent from "@smartindia/components/navbar";
 
 export default function ConstiBench() {
