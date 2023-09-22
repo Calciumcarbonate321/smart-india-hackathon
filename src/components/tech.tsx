@@ -19,7 +19,7 @@ export default function TechStackComponent(): JSX.Element {
   }, [theme]);
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center">
+    <main className="min-h-screen flex flex-col items-center justify-center" id="TechStack">
       <section className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
         <h2 className="font-bold text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
           Tech Stack

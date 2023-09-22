@@ -1,6 +1,7 @@
 import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { AiFillCaretDown } from 'react-icons/ai';
 
 export default function HeroComponent(): JSX.Element {
   const { theme, setTheme } = useTheme();
@@ -36,6 +37,12 @@ export default function HeroComponent(): JSX.Element {
             Get Started
           </section>
         </button>
+      </section>
+      <section className="flex justify-center pt-32">
+        <a className="flex flex-col items-center dark:text-white hover:-translate-y-4" href="#TechStack">
+          <section>See how it is made!</section>
+          <AiFillCaretDown />
+        </a>
       </section>
     </>
   );
