@@ -22,7 +22,7 @@ export default function NavbarComponent(): JSX.Element {
       <section className="flex gap-4 justify-between items-center">
         <ThemeButton />
         <section
-          className={`px-6 py-2 rounded-lg ${background} text-white font-medium text-lg hover:shadow-md hover:shadow-sky-400`}
+          className={`px-6 py-2 rounded-lg ${background} font-medium text-lg hover:shadow-sm hover:shadow-sky-400`}
         >
           <button
             onClick={() => {
