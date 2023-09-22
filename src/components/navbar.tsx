@@ -5,14 +5,10 @@ import ThemeButton from "./themes/button";
 
 export default function NavbarComponent(): JSX.Element {
   const { theme, setTheme } = useTheme();
-  const [background, setBackground] = useState("");
+  const [background, setBackground] = useState("bg-slate-50 text-black");
   useEffect(() => {
     if (theme === "light") {
       setBackground("bg-[#1F2937] text-white");
-    }
-
-    if (theme === "dark") {
-      setBackground("bg-sky-800 text-white");
     }
   }, [theme]);
 
@@ -26,11 +22,11 @@ export default function NavbarComponent(): JSX.Element {
       <section className="flex gap-4 justify-between items-center">
         <ThemeButton />
         <section
-          className={`px-6 py-2 rounded-lg ${background} text-white font-bold text-lg -tracking-[0.05em]`}
+          className={`px-6 py-2 rounded-lg ${background} text-white font-medium text-lg hover:shadow-md hover:shadow-sky-400`}
         >
           <button
             onClick={() => {
-              router.push("/auth/loginP");
+              router.push("/auth/login");
             }}
           >
             Login

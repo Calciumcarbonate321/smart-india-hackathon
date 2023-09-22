@@ -19,7 +19,7 @@ export default function HeroComponent(): JSX.Element {
 
   return (
     <>
-      <section className="flex flex-col justify-center items-center font-extrabold dark:gradient tracking-[-0.025em] text-7xl pt-48 pb-4 my-4">
+      <section className="flex flex-col justify-center items-center text-center self-center font-extrabold dark:gradient tracking-[-0.025em] text-7xl pt-48 pb-4 my-4">
         Case flow management Simplified
       </section>
       <section className="flex flex-wrap justify-center text-center tracking-[-0.025em] font-semibold text-4xl dark:gradient">
