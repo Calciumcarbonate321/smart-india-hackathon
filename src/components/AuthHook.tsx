@@ -14,7 +14,6 @@ export default function AuthProvider(props: IAuthProps): JSX.Element {
         () => {
             const CheckLogin = async () => {
                 const ses = await supabase.auth.getSession();
-                console.log(ses)
                 if (ses.data.session == null) {
                     router.push('/auth/login');
                 }

@@ -12,8 +12,14 @@ interface IFormProps {
     advocates: number;
 }
 
+const calculate_score = (a: any, total_hearings: number) => {
+    const diff_y: number = new Date().getMilliseconds() - new Date(a.date_of_filing).getMilliseconds();
+    return (diff_y + a.number_of_completed_hearings + a.number_of_adjournments + a.number_of_advocates) + (total_hearings * 0.2);
+};
+
 export default function Handler() {
     const { theme, setTheme } = useTheme();
+    const [listings, setListings] = useState<number>();
     const [form, setForm] = useState<IFormProps>({
         caseId: "",
         dateOfFiling: "",
@@ -33,7 +39,7 @@ export default function Handler() {
             number_of_advocates: form.advocates,
         });
         if (error) {
-            alert(error);
+            alert(error.message);
         }
     };
 
@@ -47,7 +53,7 @@ export default function Handler() {
                 if (error) {
                     alert(error);
                 }
-
+                setListings(data?.length);
                 setData(data!);
             }
             setInterval(() => { fetchData() }, 1000)
@@ -60,6 +66,11 @@ export default function Handler() {
             setBg("bg-white");
         }
     }, [theme]);
+    
+    if (data != null) {
+        data.sort((a, b) => calculate_score(a, listings!) < calculate_score(b, listings!) ? 1 : -1)
+    }
+    
     return (
         <AuthProvider>
             <section className={`min-h-screen ${bg}`}>
@@ -149,9 +160,8 @@ export default function Handler() {
                             <tbody>
                                 {
                                     data?.map((item: any) => {
-                                        console.log(item)
                                         return (
-                                            <tr className="border-b-[1px] text-center self-center" key={item.caseId}>
+                                            <tr className="border-b-[1px] text-center self-center" key={item.id}>
                                                 <td className="px-4 py-2">{item.case_id}</td>
                                                 <td className="px-4 py-2">{item.date_of_filing}</td>
                                                 <td className="px-4 py-2">{item.number_of_completed_hearings}</td>

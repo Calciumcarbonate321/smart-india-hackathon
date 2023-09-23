@@ -19,12 +19,17 @@ export interface INavProps {
     link: string;
 }
 
+const calculate_score = (a: any, total_hearings: number) => {
+    const diff_y: number = new Date().getMilliseconds() - new Date(a.date_of_filing).getMilliseconds();
+    return (diff_y + a.number_of_completed_hearings + a.number_of_adjournments + a.number_of_advocates) + (total_hearings * 0.2);
+};
 
 export default function Handler() {
     const router = useRouter();
     const [name, setName] = useState<string>("");
     const [bg, setBg] = useState<string>("");
     const [hov, setHov] = useState('');
+    const [listings, setListings] = useState<number>();
 
     const { theme, setTheme } = useTheme()
 
@@ -49,7 +54,7 @@ export default function Handler() {
                 if (error) {
                     alert(error);
                 }
-
+                setListings(data?.length)
                 setData(data!);
             }
             setInterval(() => { fetchData() }, 1000)
@@ -88,6 +93,10 @@ export default function Handler() {
         };
         getName();
     }, [supabase]);
+
+    if (data != null) {
+        data.sort((a, b) => calculate_score(a, listings!) < calculate_score(b, listings!) ? 1 : -1)
+    }
 
     return (
         <AuthProvider>
