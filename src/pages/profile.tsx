@@ -26,6 +26,7 @@ export default function Profile() {
     const [repw, setRepw] = useState<string>("");
     const [error, setError] = useState<boolean>();
     const [success, setSuccess] = useState<string>("");
+    const [profile, setProfile] = useState<string>("");
     const [form, setForm] = useState<IDataProps>({
         alma_mater: "",
         created_at: "",
@@ -91,10 +92,11 @@ export default function Profile() {
         }).eq('id', `${record_id}`);
 
         if (error) {
-            console.log(error)
-            alert(error);
+            setProfile(error.details)
+            // alert(error);
         }
-        console.log(data)
+        setProfile('Profile updated successfully!')
+
     }
 
 
@@ -163,6 +165,9 @@ export default function Profile() {
                                     disabled={true}
                                     placeholder={email}
                                 />
+                                {
+                                    profile ? <section className="py-2 text-xl font-semibold text-green-500">{profile}</section> : <section className="py-2 text-xl font-semibold text-red-500">{profile}</section>
+                                }
                                 <button className={`${button} px-4 py-2 my-2 rounded-md font-semibold text-lg`} onClick={HandleProfileUpdate}>
                                     Save
                                 </button>
