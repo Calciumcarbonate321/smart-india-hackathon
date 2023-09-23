@@ -19,7 +19,11 @@ const NavbarComponent = (props: INavProps) => {
     );
 };
 
-export default function PagesNavbarComponent(): JSX.Element {
+type ManageToggleProps = {
+    togglepocso : () => void;
+}
+
+export default function PagesNavbarComponent( {togglepocso} : ManageToggleProps ): JSX.Element {
     const router = useRouter();
     const { theme, setTheme } = useTheme();
     const [bg, setBg] = useState("");
@@ -49,6 +53,7 @@ export default function PagesNavbarComponent(): JSX.Element {
             </a>
             <section className="flex items-center gap-4">
                 <ThemeButton />
+                <button onClick = { togglepocso } className = "font-semibold text-xl tracking-tight"> Toggler</button>
                 <NavbarComponent title="Profile" link="/profile" />
                 <button
                     className={`${bg} px-4 py-1 text-lg font-semibold tracking-tight rounded-md`}

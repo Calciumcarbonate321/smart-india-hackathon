@@ -20,7 +20,10 @@ export default function Profile() {
     const { theme, setTheme } = useTheme();
     const [bg, setBg] = useState<string>("");
     const [data, setData] = useState<IDataProps>()
+
     const [email, setEmail] = useState<string>("");
+    
+
     const [button, setButton] = useState<string>("");
     const [pw, setPw] = useState<string>("");
     const [repw, setRepw] = useState<string>("");

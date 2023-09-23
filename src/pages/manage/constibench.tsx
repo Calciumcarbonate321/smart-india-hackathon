@@ -3,7 +3,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import AuthProvider from "@smartindia/components/AuthHook";
 
-export default function Handler() {
+export default function CBHandler() {
     const { theme, setTheme } = useTheme();
     const [bg, setBg] = useState("");
     useEffect(() => {
@@ -17,7 +17,6 @@ export default function Handler() {
     return (
         <AuthProvider>
             <section className={`min-h-screen ${bg}`}>
-                <PagesNavbarComponent />
                 <section className="flex">
                     <main className={`px-8 w-1/2 border-r-[1px] border-slate-500 h-fit`}>
                         <section className="py-6 font-extrabold text-6xl tracking-tight">
