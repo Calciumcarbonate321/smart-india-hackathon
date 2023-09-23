@@ -9,9 +9,9 @@ interface IDataProps {
     alma_mater: string;
     created_at: string;
     current_tenure: string;
-    id: number;
+    id?: number;
     name: string;
-    photo_url: string;
+    photo_url?: string;
     preferred_title: string;
     user_id: string;
 }
@@ -26,17 +26,17 @@ export default function Profile() {
     const [repw, setRepw] = useState<string>("");
     const [error, setError] = useState<boolean>();
     const [success, setSuccess] = useState<string>("");
-    const [image, setImage] = useState<any>();
+    const [form, setForm] = useState<IDataProps>({
+        alma_mater: "",
+        created_at: "",
+        current_tenure: "",
+        id: 0,
+        name: "",
+        preferred_title: "",
+        user_id: "",
+    });
 
-    const UploadImage = async () => {
-        const uuid = uuidv4();
-        console.log(image)
-        const { data, error } = await supabase.storage.from('pfp').upload(`${uuid}.png`, image, { cacheControl: '3600' });
-        console.log(data)
-        // if (!error){
-        // await supabase.from('users').update({ photo_url: data?.Key });
-        // }
-    }
+
 
     const HandlePasswordUpdate = async () => {
         if (pw === repw) {
@@ -75,6 +75,28 @@ export default function Profile() {
         fetchData()
     }, [supabase])
 
+    const HandleProfileUpdate = async () => {
+        const user = await supabase.auth.getUser();
+        const id = user.data.user?.id;
+        console.log(id)
+
+        const res = await supabase.from('users').select().eq('user_id', `${id}`).single();
+        const record_id = res.data.id;
+
+        const { data, error } = await supabase.from('users').update({
+            name: form.name,
+            alma_mater: form.alma_mater,
+            current_tenure: form.current_tenure,
+            preferred_title: form.preferred_title
+        }).eq('id', `${record_id}`);
+
+        if (error) {
+            console.log(error)
+            alert(error);
+        }
+        console.log(data)
+    }
+
 
     return (
         <AuthProvider>
@@ -94,6 +116,9 @@ export default function Profile() {
                                     className="h-12 p-4 w-full rounded-md border"
                                     placeholder={data?.name}
                                     type="textarea"
+                                    onChange={(e) => {
+                                        setForm({ ...form, name: e.target.value });
+                                    }}
                                 />
                                 <section className="py-4 text-2xl font-semibold tracking-tight">
                                     Alma Mater
@@ -102,6 +127,9 @@ export default function Profile() {
                                     className="h-12 p-4 w-full rounded-md border"
                                     type="textarea"
                                     placeholder={data?.alma_mater}
+                                    onChange={(e) => {
+                                        setForm({ ...form, alma_mater: e.target.value });
+                                    }}
                                 />
                                 <section className="py-4 text-2xl font-semibold tracking-tight">
                                     Current Tenure
@@ -110,7 +138,9 @@ export default function Profile() {
                                     className="h-12 p-4 w-full rounded-md border"
                                     type="textarea"
                                     placeholder={data?.current_tenure}
-                                />
+                                    onChange={(e) => {
+                                        setForm({ ...form, current_tenure: e.target.value })
+                                    }} />
                             </section>
                             <section className="w-1/3">
                                 <section className="py-4 text-2xl font-semibold tracking-tight">
@@ -120,6 +150,9 @@ export default function Profile() {
                                     className="h-12 p-4 w-full rounded-md border"
                                     type="textarea"
                                     placeholder={data?.preferred_title}
+                                    onChange={(e) => {
+                                        setForm({ ...form, preferred_title: e.target.value })
+                                    }}
                                 />
                                 <section className="py-4 text-2xl font-semibold tracking-tight">
                                     Your mail
@@ -130,6 +163,9 @@ export default function Profile() {
                                     disabled={true}
                                     placeholder={email}
                                 />
+                                <button className={`${button} px-4 py-2 my-2 rounded-md font-semibold text-lg`} onClick={HandleProfileUpdate}>
+                                    Save
+                                </button>
                             </section>
                             <section className="w-1/3">
                                 <section className="flex flex-col gap-4 items-center">
@@ -138,10 +174,6 @@ export default function Profile() {
                                         alt="Profile Picture"
                                         className="rounded-full h-64 w-64"
                                     />
-                                    {/* <center className="flex flex-col items-start justify-center">
-                                        <input type="file" accept="image/*" onChange={(e) => setImage(e.target.files![0])} />
-                                        <button className={"rounded-md text-lg px-4 py-1 my-1 " + button} onClick={UploadImage}>Save</button>
-                                    </center> */}
                                 </section>
                             </section>
                         </section>

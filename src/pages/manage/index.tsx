@@ -53,7 +53,6 @@ export default function Handler() {
             setInterval(() => { fetchData() }, 1000)
         }, [supabase]
     )
-    console.log(data)
     useEffect(() => {
         if (theme === "dark" || theme === "system") {
             setBg("bg-zinc-950");
@@ -162,36 +161,6 @@ export default function Handler() {
                                         )
                                     })
                                 }
-                                {/* <tr className="border-b-[1px] text-center self-center">
-                                    <td className="px-4 py-2">1</td>
-                                    <td className="px-4 py-2">Criminal</td>
-                                    <td className="px-4 py-2">1234</td>
-                                </tr>
-                                <tr className="border-b-[1px] text-center self-center">
-                                    <td className="px-4 py-2">2</td>
-                                    <td className="px-4 py-2">Traffic Violation</td>
-                                    <td className="px-4 py-2">5678</td>
-                                </tr>
-                                <tr className="border-b-[1px] text-center self-center">
-                                    <td className="px-4 py-2">3</td>
-                                    <td className="px-4 py-2">Assault</td>
-                                    <td className="px-4 py-2">9876</td>
-                                </tr>
-                                <tr className="border-b-[1px] text-center self-center">
-                                    <td className="px-4 py-2">4</td>
-                                    <td className="px-4 py-2">Burglary</td>
-                                    <td className="px-4 py-2">5432</td>
-                                </tr>
-                                <tr className="border-b-[1px] text-center self-center">
-                                    <td className="px-4 py-2">5</td>
-                                    <td className="px-4 py-2">Fraud</td>
-                                    <td className="px-4 py-2">8765</td>
-                                </tr>
-                                <tr className="border-b-[1px] text-center self-center">
-                                    <td className="px-4 py-2">6</td>
-                                    <td className="px-4 py-2">Robbery</td>
-                                    <td className="px-4 py-2">4321</td>
-                                </tr> */}
                             </tbody>
                         </table>
                     </main>

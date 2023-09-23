@@ -5,7 +5,16 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-interface INavProps {
+interface IFormProps {
+    caseId: string;
+    dateOfFiling: string;
+    completedHearings: number;
+    adjournments: number;
+    advocates: number;
+}
+
+
+export interface INavProps {
     title: string;
     link: string;
 }
@@ -29,6 +38,22 @@ export default function Handler() {
                 setHov('hover:bg-zinc-100')
             }
         }, [theme]
+    )
+
+    const [data, setData] = useState<IFormProps[]>();
+
+    useEffect(
+        () => {
+            const fetchData = async () => {
+                const { data, error } = await supabase.from('section_one').select('*');
+                if (error) {
+                    alert(error);
+                }
+
+                setData(data!);
+            }
+            setInterval(() => { fetchData() }, 1000)
+        }, [supabase]
     )
 
     const HandleSignOut = async () => {
@@ -99,45 +124,31 @@ export default function Handler() {
                     </section>
                 </section>
                 <section>
-                    <table className="table-auto w-full justify-between rounded-md border">
+                    <table className="w-full justify-between rounded-md border">
                         <thead>
                             <tr className="border-b-[1px] rounded">
-                                <th className="px-4 py-2">ID</th>
-                                <th className="px-4 py-2">Case Type</th>
-                                <th className="px-4 py-2">Case Number</th>
+                                <th className="px-4 py-2">Case ID</th>
+                                <th className="px-4 py-2">Date of Filing</th>
+                                <th className="px-4 py-2">Number of completed hearings</th>
+                                <th className="px-4 py-2">Number of adjournments</th>
+                                <th className="px-4 py-2">Number of advocates</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr className="border-b-[1px] text-center self-center">
-                                <td className="px-4 py-2">1</td>
-                                <td className="px-4 py-2">Criminal</td>
-                                <td className="px-4 py-2">1234</td>
-                            </tr>
-                            <tr className="border-b-[1px] text-center self-center">
-                                <td className="px-4 py-2">2</td>
-                                <td className="px-4 py-2">Traffic Violation</td>
-                                <td className="px-4 py-2">5678</td>
-                            </tr>
-                            <tr className="border-b-[1px] text-center self-center">
-                                <td className="px-4 py-2">3</td>
-                                <td className="px-4 py-2">Assault</td>
-                                <td className="px-4 py-2">9876</td>
-                            </tr>
-                            <tr className="border-b-[1px] text-center self-center">
-                                <td className="px-4 py-2">4</td>
-                                <td className="px-4 py-2">Burglary</td>
-                                <td className="px-4 py-2">5432</td>
-                            </tr>
-                            <tr className="border-b-[1px] text-center self-center">
-                                <td className="px-4 py-2">5</td>
-                                <td className="px-4 py-2">Fraud</td>
-                                <td className="px-4 py-2">8765</td>
-                            </tr>
-                            <tr className="border-b-[1px] text-center self-center">
-                                <td className="px-4 py-2">6</td>
-                                <td className="px-4 py-2">Robbery</td>
-                                <td className="px-4 py-2">4321</td>
-                            </tr>
+                            {
+                                data?.map((item: any) => {
+                                    console.log(item)
+                                    return (
+                                        <tr className="border-b-[1px] text-center self-center" key={item.caseId}>
+                                            <td className="px-4 py-2">{item.case_id}</td>
+                                            <td className="px-4 py-2">{item.date_of_filing}</td>
+                                            <td className="px-4 py-2">{item.number_of_completed_hearings}</td>
+                                            <td className="px-4 py-2">{item.number_of_adjournments}</td>
+                                            <td className="px-4 py-2">{item.number_of_advocates}</td>
+                                        </tr>
+                                    )
+                                })
+                            }
                         </tbody>
                     </table>
                 </section>
