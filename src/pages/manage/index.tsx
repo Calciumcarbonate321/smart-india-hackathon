@@ -39,7 +39,7 @@ export default function Handler() {
             number_of_advocates: form.advocates,
         });
         if (error) {
-            alert(error.message);
+            console.log(error.message);
         }
     };
 
