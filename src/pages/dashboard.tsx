@@ -50,9 +50,9 @@ export default function Handler() {
     useEffect(
         () => {
             const fetchData = async () => {
-                const { data, error } = await supabase.from('section_one').select('*');
+                const { data, error } = await supabase.from('section_one').select('*').eq('user_id', (await supabase.auth.getUser()).data.user?.id);
                 if (error) {
-                    alert(error);
+                    alert(error.details);
                 }
                 setListings(data?.length)
                 setData(data!);
@@ -146,7 +146,6 @@ export default function Handler() {
                         <tbody>
                             {
                                 data?.map((item: any) => {
-                                    console.log(item)
                                     return (
                                         <tr className="border-b-[1px] text-center self-center" key={item.caseId}>
                                             <td className="px-4 py-2">{item.case_id}</td>

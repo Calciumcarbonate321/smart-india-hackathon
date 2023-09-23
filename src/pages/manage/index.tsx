@@ -49,7 +49,7 @@ export default function Handler() {
     useEffect(
         () => {
             const fetchData = async () => {
-                const { data, error } = await supabase.from('section_one').select('*');
+                const { data, error } = await supabase.from('section_one').select('*').eq('user_id', (await supabase.auth.getUser()).data.user?.id);
                 if (error) {
                     alert(error);
                 }
@@ -66,11 +66,11 @@ export default function Handler() {
             setBg("bg-white");
         }
     }, [theme]);
-    
+
     if (data != null) {
         data.sort((a, b) => calculate_score(a, listings!) < calculate_score(b, listings!) ? 1 : -1)
     }
-    
+
     return (
         <AuthProvider>
             <section className={`min-h-screen ${bg}`}>
