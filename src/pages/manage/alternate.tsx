@@ -3,13 +3,14 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import AuthProvider from "@smartindia/components/AuthHook";
 
+
 export default function Handler() {
     const { theme, setTheme } = useTheme();
     const [bg, setBg] = useState("");
     useEffect(() => {
         if (theme === "dark") {
             setBg("bg-zinc-950");
-            
+
         } else {
             setBg("bg-white");
         }

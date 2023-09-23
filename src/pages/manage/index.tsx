@@ -1,12 +1,59 @@
-import PagesNavbarComponent from "@smartindia/components/navbar/manage";
 import AuthProvider from "@smartindia/components/AuthHook";
+import PagesNavbarComponent from "@smartindia/components/navbar/manage";
+import supabase from "@smartindia/components/supabase";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
+interface IFormProps {
+    caseId: string;
+    dateOfFiling: string;
+    completedHearings: number;
+    adjournments: number;
+    advocates: number;
+}
 
 export default function Handler() {
     const { theme, setTheme } = useTheme();
+    const [form, setForm] = useState<IFormProps>({
+        caseId: "",
+        dateOfFiling: "",
+        completedHearings: 0,
+        adjournments: 0,
+        advocates: 0,
+    });
+
+    const HandleCaseCreation = async () => {
+        const user_id = (await supabase.auth.getUser()).data.user?.id;
+        const { data, error } = await supabase.from("section_one").insert({
+            case_id: form.caseId,
+            user_id: user_id,
+            date_of_filing: form.dateOfFiling,
+            number_of_completed_hearings: form.completedHearings,
+            number_of_adjournments: form.adjournments,
+            number_of_advocates: form.advocates,
+        });
+        if (error) {
+            alert(error);
+        }
+    };
+
     const [bg, setBg] = useState("");
+    const [data, setData] = useState<IFormProps[]>();
+
+    useEffect(
+        () => {
+            const fetchData = async () => {
+                const { data, error } = await supabase.from('section_one').select('*');
+                if (error) {
+                    alert(error);
+                }
+
+                setData(data!);
+            }
+            setInterval(() => { fetchData() }, 1000)
+        }, [supabase]
+    )
+    console.log(data)
     useEffect(() => {
         if (theme === "dark" || theme === "system") {
             setBg("bg-zinc-950");
@@ -29,11 +76,19 @@ export default function Handler() {
                                 type="text"
                                 placeholder="Enter your case ID here"
                                 className="w-full h-12 p-2 rounded-md my-2 border"
+                                onChange={(e) => {
+                                    setForm({ ...form, caseId: e.target.value });
+                                }}
                             />
-                            <section className="text-2xl font-semibold">Date of Filing</section>
+                            <section className="text-2xl font-semibold">
+                                Date of Filing
+                            </section>
                             <input
                                 type="date"
                                 className="w-full h-12 p-2 rounded-md my-2 border"
+                                onChange={(e) => {
+                                    setForm({ ...form, dateOfFiling: e.target.value });
+                                }}
                             />
                             <section className="text-2xl font-semibold">
                                 Number of completed hearings
@@ -42,6 +97,12 @@ export default function Handler() {
                                 type="number"
                                 placeholder="Enter the number of completed hearings"
                                 className="w-full h-12 p-2 rounded-md my-2 border"
+                                onChange={(e) => {
+                                    setForm({
+                                        ...form,
+                                        completedHearings: parseInt(e.target.value),
+                                    });
+                                }}
                             />
                             <section className="text-2xl font-semibold">
                                 Number of adjournments
@@ -50,10 +111,27 @@ export default function Handler() {
                                 type="number"
                                 placeholder="Enter the number of adjournments"
                                 className="w-full h-12 p-2 rounded-md my-2 border"
+                                onChange={(e) => {
+                                    setForm({ ...form, adjournments: parseInt(e.target.value) });
+                                }}
+                            />
+                            <section className="text-2xl font-semibold">
+                                Number of advocates
+                            </section>
+                            <input
+                                type="number"
+                                placeholder="Enter the number of adjournments"
+                                className="w-full h-12 p-2 rounded-md my-2 border"
+                                onChange={(e) => {
+                                    setForm({ ...form, advocates: parseInt(e.target.value) });
+                                }}
                             />
                         </section>
                         <section className="flex w-full justify-end items-center">
-                            <button className="bg-neutral-200 text-stone-950 px-4 py-1 text-lg font-semibold tracking-tight rounded-md">
+                            <button
+                                className="bg-neutral-200 text-stone-950 px-4 py-1 text-lg font-semibold tracking-tight rounded-md"
+                                onClick={HandleCaseCreation}
+                            >
                                 Save
                             </button>
                         </section>
@@ -62,13 +140,29 @@ export default function Handler() {
                         <table className="w-full justify-between rounded-md border">
                             <thead>
                                 <tr className="border-b-[1px] rounded">
-                                    <th className="px-4 py-2">ID</th>
-                                    <th className="px-4 py-2">Case Type</th>
-                                    <th className="px-4 py-2">Case Number</th>
+                                    <th className="px-4 py-2">Case ID</th>
+                                    <th className="px-4 py-2">Date of Filing</th>
+                                    <th className="px-4 py-2">Number of completed hearings</th>
+                                    <th className="px-4 py-2">Number of adjournments</th>
+                                    <th className="px-4 py-2">Number of advocates</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className="border-b-[1px] text-center self-center">
+                                {
+                                    data?.map((item: any) => {
+                                        console.log(item)
+                                        return (
+                                            <tr className="border-b-[1px] text-center self-center" key={item.caseId}>
+                                                <td className="px-4 py-2">{item.case_id}</td>
+                                                <td className="px-4 py-2">{item.date_of_filing}</td>
+                                                <td className="px-4 py-2">{item.number_of_completed_hearings}</td>
+                                                <td className="px-4 py-2">{item.number_of_adjournments}</td>
+                                                <td className="px-4 py-2">{item.number_of_advocates}</td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+                                {/* <tr className="border-b-[1px] text-center self-center">
                                     <td className="px-4 py-2">1</td>
                                     <td className="px-4 py-2">Criminal</td>
                                     <td className="px-4 py-2">1234</td>
@@ -97,7 +191,7 @@ export default function Handler() {
                                     <td className="px-4 py-2">6</td>
                                     <td className="px-4 py-2">Robbery</td>
                                     <td className="px-4 py-2">4321</td>
-                                </tr>
+                                </tr> */}
                             </tbody>
                         </table>
                     </main>
