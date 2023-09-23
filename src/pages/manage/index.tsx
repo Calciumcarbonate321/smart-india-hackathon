@@ -51,7 +51,7 @@ export default function Handler() {
             const fetchData = async () => {
                 const { data, error } = await supabase.from('section_one').select('*').eq('user_id', (await supabase.auth.getUser()).data.user?.id);
                 if (error) {
-                    alert(error);
+                    console.error(error.message);
                 }
                 setListings(data?.length);
                 setData(data!);

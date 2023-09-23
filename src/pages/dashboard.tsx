@@ -52,7 +52,7 @@ export default function Handler() {
             const fetchData = async () => {
                 const { data, error } = await supabase.from('section_one').select('*').eq('user_id', (await supabase.auth.getUser()).data.user?.id);
                 if (error) {
-                    alert(error.details);
+                    console.log(error.details);
                 }
                 setListings(data?.length)
                 setData(data!);
@@ -64,7 +64,7 @@ export default function Handler() {
     const HandleSignOut = async () => {
         const res = await supabase.auth.signOut();
         if (res.error) {
-            alert(res.error);
+            console.error(res.error);
         }
         router.push("/");
     };

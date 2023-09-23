@@ -31,7 +31,7 @@ export default function Login() {
             password: password,
         })
         if (res.error) {
-            alert(res.error.message)
+            console.error(res.error.message)
         } else {
             router.push("/dashboard")
         }

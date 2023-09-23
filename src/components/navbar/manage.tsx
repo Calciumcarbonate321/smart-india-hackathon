@@ -35,7 +35,7 @@ export default function PagesNavbarComponent(): JSX.Element {
     const HandleSignOut = async () => {
         const res = await supabase.auth.signOut();
         if (res.error) {
-            alert(res.error);
+            console.log(res.error);
         }
         router.push("/");
     };

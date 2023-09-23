@@ -37,7 +37,7 @@ export default function Login() {
             password: password,
         })
         if (res.error) {
-            alert(res.error.message)
+            console.log(res.error.message)
         }
 
         if (res.data.user?.aud === 'authenticated') {
