@@ -17,6 +17,7 @@ interface IDataProps {
 }
 
 export default function Profile() {
+    
     const { theme, setTheme } = useTheme();
     const [bg, setBg] = useState<string>("");
     const [data, setData] = useState<IDataProps>()
