@@ -7,10 +7,15 @@ import { useEffect, useState } from "react";
 
 interface IFormProps {
     caseId: string;
+    caseIdWeight: number;
     dateOfFiling: string;
+    dateOfFilingWeight: number;
     completedHearings: number;
+    completedHearingsWeight: number;
     adjournments: number;
+    adjournmentsWeight: number;
     advocates: number;
+    advocatesWeight: number;
 }
 
 
@@ -21,7 +26,7 @@ export interface INavProps {
 
 const calculate_score = (a: any, total_hearings: number) => {
     const diff_y: number = new Date().getMilliseconds() - new Date(a.date_of_filing).getMilliseconds();
-    return (diff_y + a.number_of_completed_hearings + a.number_of_adjournments + a.number_of_advocates) + (total_hearings * 0.2);
+    return (diff_y + a.number_of_completed_hearings*a.number_of_completed_hearings_wt + a.number_of_adjournments*a.number_of_adjournments_wt + a.number_of_advocates*a.number_of_advocates_wt) + (total_hearings * 0.2);
 };
 
 export default function Handler() {
@@ -139,8 +144,11 @@ export default function Handler() {
                                 <th className="px-4 py-2">Case ID</th>
                                 <th className="px-4 py-2">Date of Filing</th>
                                 <th className="px-4 py-2">Number of completed hearings</th>
+                                <th className="px-4 py-2">Corresponding weightage to vary</th>
                                 <th className="px-4 py-2">Number of adjournments</th>
+                                <th className="px-4 py-2">Corresponding weightage to vary</th>
                                 <th className="px-4 py-2">Number of advocates</th>
+                                <th className="px-4 py-2">Corresponding weightage to vary</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -151,8 +159,11 @@ export default function Handler() {
                                             <td className="px-4 py-2">{item.case_id}</td>
                                             <td className="px-4 py-2">{item.date_of_filing}</td>
                                             <td className="px-4 py-2">{item.number_of_completed_hearings}</td>
+                                            <td className="px-4 py-2">{item.number_of_completed_hearings_wt}</td>
                                             <td className="px-4 py-2">{item.number_of_adjournments}</td>
+                                            <td className="px-4 py-2">{item.number_of_adjournments_wt}</td>
                                             <td className="px-4 py-2">{item.number_of_advocates}</td>
+                                            <td className="px-4 py-2">{item.number_of_advocates_wt}</td>
                                         </tr>
                                     )
                                 })
