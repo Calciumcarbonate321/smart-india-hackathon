@@ -99,7 +99,7 @@ export default function TechStackComponent(): JSX.Element {
       </section>
       <section className="py-4 first-letter:mx-auto text-center md:max-w-[58rem]">
         <p className="leading-normal py-2 sm:text-lg sm:leading-7">
-          This website was designed by Abhijith, Anvesha, Harshit, Sam, Sinchan and Visnu!
+          This website was designed by Abhijith, Harshit, Sinchan, Anvesha, Visnu, Sam, and Sai Kumar!
         </p>
       </section>
     </main>
