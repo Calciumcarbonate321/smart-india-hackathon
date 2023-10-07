@@ -110,7 +110,7 @@ export default function Handler() {
             <main className={"pt-16 px-4 min-h-screen " + bg}>
                 <section className="border-b-[1px] flex w-full justify-between items-center pb-6">
                     <section className="font-extrabold -tracking-[1.1] text-4xl leading-tight">
-                        Welcome to CaseFlowPro!
+                        Welcome to CaseFlowPro!!!
                     </section>
                     <section className="flex justify-between items-center gap-4 px-4">
                         <ThemeButton />
