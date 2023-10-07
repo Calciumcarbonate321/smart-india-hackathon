@@ -20,7 +20,7 @@ interface IFormProps {
 
 const calculate_score = (a: any, total_hearings: number) => {
     const diff_y: number = new Date().getMilliseconds() - new Date(a.date_of_filing).getMilliseconds();
-    return (diff_y + a.sections*a.sc_wt + a.number_of_adjournments*a.adj_wt + a.number_of_advocates*a.adv_wt+a.potential_witness*a.pw_wt) + (total_hearings * 0.2);
+    return (diff_y + a.sections*a.sc_wt/10 + a.number_of_adjournments*a.adj_wt/10 + a.number_of_advocates*a.adv_wt/10+a.potential_witness*a.pw_wt/10) + (total_hearings * 0.2);
 };
 
 export default function Handler() {
