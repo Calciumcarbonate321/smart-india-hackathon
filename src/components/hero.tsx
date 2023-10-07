@@ -25,8 +25,7 @@ export default function HeroComponent(): JSX.Element {
       </section>
       <section className="flex flex-wrap justify-center text-center tracking-[-0.025em] font-semibold text-4xl dark:gradient">
         <section className="w-3/5">
-          Track your upcoming case listing and set-up priorities and alert
-          system
+          Differentiated Case Flow Management feature enabled+
         </section>
       </section>
       <section className="flex justify-center py-6">
