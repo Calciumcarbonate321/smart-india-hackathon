@@ -13,7 +13,7 @@ interface IFormProps {
     adj_wt: number;
     advocates: number;
     adv_wt: number;
-    potentialwitness: number;
+    potential_witness: number;
     pw_wt: number;
 
 }
