@@ -9,9 +9,15 @@ import { useEffect, useState } from "react";
 interface IFormProps {
     caseId: string;
     dateOfFiling: string;
-    completedHearings: number;
+    sections: number;
+    sc_wt:number;
     adjournments: number;
+    adj_wt: number;
     advocates: number;
+    adv_wt: number;
+    potentialwitness: number;
+    pw_wt: number;
+
 }
 
 
@@ -22,7 +28,7 @@ export interface INavProps {
 
 const calculate_score = (a: any, total_hearings: number) => {
     const diff_y: number = new Date().getMilliseconds() - new Date(a.date_of_filing).getMilliseconds();
-    return (diff_y + a.number_of_completed_hearings + a.number_of_adjournments + a.number_of_advocates) + (total_hearings * 0.2);
+    return (diff_y + a.sections + a.number_of_adjournments + a.number_of_advocates) + (total_hearings * 0.2);
 };
 
 export default function Handler() {
@@ -137,11 +143,16 @@ export default function Handler() {
                     <table className="w-full justify-between rounded-md border">
                         <thead>
                             <tr className="border-b-[1px] rounded">
-                                <th className="px-4 py-2">Case ID</th>
-                                <th className="px-4 py-2">Date of Filing</th>
-                                <th className="px-4 py-2">Number of completed hearings</th>
-                                <th className="px-4 py-2">Number of adjournments</th>
-                                <th className="px-4 py-2">Number of advocates</th>
+                               <th className="px-4 py-2">Case ID</th>
+                                    <th className="px-4 py-2">Date of Filing</th>
+                                    <th className="px-4 py-2">Sections appeared</th>
+{/*                                     <th className="px-4 py-2">Wt_sections</th> */}
+                                    <th className="px-4 py-2">Number of adjournments</th>
+{/*                                     <th className="px-4 py-2">Wt_adj</th> */}
+                                    <th className="px-4 py-2">Number of advocates</th>
+{/*                                     <th className="px-4 py-2">Wt_adv</th> */}
+                                    <th className="px-4 py-2">Potential Witness</th>
+{/*                                     <th className="px-4 py-2">Wt_witness</th> */}
                             </tr>
                         </thead>
                         <tbody>
@@ -149,11 +160,12 @@ export default function Handler() {
                                 data?.map((item: any) => {
                                     return (
                                         <tr className="border-b-[1px] text-center self-center" key={item.caseId}>
-                                            <td className="px-4 py-2">{item.case_id}</td>
-                                            <td className="px-4 py-2">{item.date_of_filing}</td>
-                                            <td className="px-4 py-2">{item.number_of_completed_hearings}</td>
-                                            <td className="px-4 py-2">{item.number_of_adjournments}</td>
-                                            <td className="px-4 py-2">{item.number_of_advocates}</td>
+                                           <td className="px-4 py-2">{item.case_id}</td>
+                                                <td className="px-4 py-2">{item.date_of_filing}</td>
+                                                <td className="px-4 py-2">{item.sections}</td>
+                                                <td className="px-4 py-2">{item.number_of_adjournments}</td>
+                                                <td className="px-4 py-2">{item.number_of_advocates}</td>
+                                                 <td className="px-4 py-2">{item.potential_witness}</td>
                                         </tr>
                                     )
                                 })
