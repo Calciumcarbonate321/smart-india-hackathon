@@ -7,14 +7,20 @@ import { useEffect, useState } from "react";
 interface IFormProps {
     caseId: string;
     dateOfFiling: string;
-    completedHearings: number;
+    sections: number;
+    sc_wt:number;
     adjournments: number;
+    adj_wt: number;
     advocates: number;
+    adv_wt: number;
+    potentialwitness: number;
+    pw_wt: number;
+
 }
 
 const calculate_score = (a: any, total_hearings: number) => {
     const diff_y: number = new Date().getMilliseconds() - new Date(a.date_of_filing).getMilliseconds();
-    return (diff_y + a.number_of_completed_hearings + a.number_of_adjournments + a.number_of_advocates) + (total_hearings * 0.2);
+    return (diff_y + a.sections*a.sc_wt + a.number_of_adjournments*a.adj_wt + a.number_of_advocates*a.adv_wt+a.potential_witness*a.pw_wt) + (total_hearings * 0.2);
 };
 
 export default function Handler() {
@@ -23,9 +29,14 @@ export default function Handler() {
     const [form, setForm] = useState<IFormProps>({
         caseId: "",
         dateOfFiling: "",
-        completedHearings: 0,
+        sections: 0,
+        sc_wt: 0,
         adjournments: 0,
+        adj_wt: 0,
         advocates: 0,
+        adv_wt: 0,
+        potential_witness: 0,
+        pw_wt: 0,
     });
 
     const HandleCaseCreation = async () => {
@@ -34,9 +45,14 @@ export default function Handler() {
             case_id: form.caseId,
             user_id: user_id,
             date_of_filing: form.dateOfFiling,
-            number_of_completed_hearings: form.completedHearings,
+            sections: form.sections,
+            sc_wt: form.sc_wt,
             number_of_adjournments: form.adjournments,
+            adj_wt: form.adj_wt,
             number_of_advocates: form.advocates,
+            adv_wt: form.adv_wt,
+            potential_witness: form.potential_witness,
+            pw_wt: form.pw_wt,
         });
         if (error) {
             console.log(error.message);
@@ -101,16 +117,30 @@ export default function Handler() {
                                 }}
                             />
                             <section className="text-2xl font-semibold">
-                                Number of completed hearings
+                                Number of Sections appeared
                             </section>
                             <input
                                 type="number"
-                                placeholder="Enter the number of completed hearings"
+                                placeholder="Enter the number of sections appeared"
                                 className="w-full h-12 p-2 rounded-md my-2 border"
                                 onChange={(e) => {
                                     setForm({
                                         ...form,
-                                        completedHearings: parseInt(e.target.value),
+                                        sections: parseInt(e.target.value),
+                                    });
+                                }}
+                            /> 
+                            <section className="text-2xl font-semibold">
+                                Weight_sections
+                            </section>
+                            <input
+                                type="number"
+                                placeholder="Enter the respective weight to it"
+                                className="w-full h-12 p-2 rounded-md my-2 border"
+                                onChange={(e) => {
+                                    setForm({
+                                        ...form,
+                                        sc_wt: parseInt(e.target.value),
                                     });
                                 }}
                             />
@@ -125,6 +155,20 @@ export default function Handler() {
                                     setForm({ ...form, adjournments: parseInt(e.target.value) });
                                 }}
                             />
+                             <section className="text-2xl font-semibold">
+                                Weight_adjournment
+                            </section>
+                            <input
+                                type="number"
+                                placeholder="Enter the respective weight to it"
+                                className="w-full h-12 p-2 rounded-md my-2 border"
+                                onChange={(e) => {
+                                    setForm({
+                                        ...form,
+                                        adj_wt: parseInt(e.target.value),
+                                    });
+                                }}
+                            />
                             <section className="text-2xl font-semibold">
                                 Number of advocates
                             </section>
@@ -136,7 +180,48 @@ export default function Handler() {
                                     setForm({ ...form, advocates: parseInt(e.target.value) });
                                 }}
                             />
+                             <section className="text-2xl font-semibold">
+                                Weight_advocates
+                            </section>
+                            <input
+                                type="number"
+                                placeholder="Enter the respective weight to it"
+                                className="w-full h-12 p-2 rounded-md my-2 border"
+                                onChange={(e) => {
+                                    setForm({
+                                        ...form,
+                                        adv_wt: parseInt(e.target.value),
+                                    });
+                                }}
+                            />
                         </section>
+                         <section className="text-2xl font-semibold">
+                                No. of Potential Witnesses
+                            </section>
+                            <input
+                                type="number"
+                                placeholder="Enter the respective weight to it"
+                                className="w-full h-12 p-2 rounded-md my-2 border"
+                                onChange={(e) => {
+                                    setForm({
+                                        ...form,
+                                        potential_witness: parseInt(e.target.value),
+                                    });
+                                }}
+                            /> <section className="text-2xl font-semibold">
+                                Weight_witness
+                            </section>
+                            <input
+                                type="number"
+                                placeholder="Enter the respective weight to it"
+                                className="w-full h-12 p-2 rounded-md my-2 border"
+                                onChange={(e) => {
+                                    setForm({
+                                        ...form,
+                                        pw_wt: parseInt(e.target.value),
+                                    });
+                                }}
+                            />
                         <section className="flex w-full justify-end items-center">
                             <button
                                 className="bg-neutral-200 text-stone-950 px-4 py-1 text-lg font-semibold tracking-tight rounded-md"
@@ -152,9 +237,14 @@ export default function Handler() {
                                 <tr className="border-b-[1px] rounded">
                                     <th className="px-4 py-2">Case ID</th>
                                     <th className="px-4 py-2">Date of Filing</th>
-                                    <th className="px-4 py-2">Number of completed hearings</th>
+                                    <th className="px-4 py-2">Sections appeared</th>
+{/*                                     <th className="px-4 py-2">Wt_sections</th> */}
                                     <th className="px-4 py-2">Number of adjournments</th>
+{/*                                     <th className="px-4 py-2">Wt_adj</th> */}
                                     <th className="px-4 py-2">Number of advocates</th>
+{/*                                     <th className="px-4 py-2">Wt_adv</th> */}
+                                    <th className="px-4 py-2">Potential Witness</th>
+{/*                                     <th className="px-4 py-2">Wt_witness</th> */}
                                 </tr>
                             </thead>
                             <tbody>
@@ -164,9 +254,10 @@ export default function Handler() {
                                             <tr className="border-b-[1px] text-center self-center" key={item.id}>
                                                 <td className="px-4 py-2">{item.case_id}</td>
                                                 <td className="px-4 py-2">{item.date_of_filing}</td>
-                                                <td className="px-4 py-2">{item.number_of_completed_hearings}</td>
+                                                <td className="px-4 py-2">{item.sections}</td>
                                                 <td className="px-4 py-2">{item.number_of_adjournments}</td>
                                                 <td className="px-4 py-2">{item.number_of_advocates}</td>
+                                                 <td className="px-4 py-2">{item.potential_witness}</td>
                                             </tr>
                                         )
                                     })
