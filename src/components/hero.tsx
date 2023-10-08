@@ -25,7 +25,7 @@ export default function HeroComponent(): JSX.Element {
       </section>
       <section className="flex flex-wrap justify-center text-center tracking-[-0.025em] font-semibold text-4xl dark:gradient">
         <section className="w-3/5">
-          Differentiated Case Flow Management feature enabled+
+         Track your upcoming case listing, set-up priorities and notifications.
         </section>
       </section>
       <section className="flex justify-center py-6">
@@ -33,7 +33,7 @@ export default function HeroComponent(): JSX.Element {
           <section
             className={`rounded-lg px-8 py-2 text-lg ${background} font-normal tracking-[-0.025em] hover:shadow-md hover:shadow-sky-300`}
           >
-            Get Started
+            DCM Enabled
           </section>
         </button>
       </section>
