@@ -1,40 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## CaseFlowPro_beta 💼
+- CaseFlowPro is an innovative platform developed by Team Chordians, aimed at revolutionizing India's legal system. This project addresses the challenges faced by the judicial system through Differentiated Case Flow Management (DCM), ensuring tailored attention to each legal case.
 
-## Getting Started
+## Features 🚀
+- Differentiated Case Flow Management (DCM): CaseFlowPro_beta utilizes DCM to understand the unique needs of each case, prioritizing them intelligently for efficient resolutions.
 
-First, run the development server:
+- Smart Case Assessment: The platform assesses cases based on complexity, urgency, and required resources, assigning them to specific tracks for swift and effective resolutions.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Technologies Used 🔧
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Next.js 13: Leveraging the power of Next.js for seamless user experience with Pages directory, Routing, and Layouts.
+2. React 18: Utilizing advanced features like Server and Client Components, optimizing performance through hooks.
+3. PostgreSQL: Ensuring reliability, scalability, and efficiency in handling vast datasets for data management.
+4. Tailwind CSS: Enhancing user interface aesthetics and responsiveness for a visually appealing design.
+5. Google Authentication: Prioritizing security and user convenience through seamless and secure login experience.
+6. Supabase: Implementing Auth, Storage, and Blob serverlessly for efficient data management and storage capabilities.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Next.js Font Optimization: Automatically optimizing and loading Inter, a custom Google Font, using next/font.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+![Screenshot (131)](https://github.com/Calciumcarbonate321/smart-india-hackathon/assets/110082422/8cd6e11a-7325-4d5c-a48e-90cc8eb7e95e) 
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Getting Started 🛠️
 
-## Deploy on Vercel
+This is a Next.js project bootstrapped with create-next-app.
+  
+- Open http://localhost:3000 with your browser to see the result.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- You can start editing the page by modifying pages/index.tsx. The page auto-updates as you edit the file.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- API routes can be accessed on http://localhost:3000/api/hello. This endpoint can be edited in pages/api/hello.ts.
+
+- The pages/api directory is mapped to /api/*. Files in this directory are treated as API routes instead of React pages.
+
+### Team Chordians 👥
+
+
+1. Harshit Kumar Singh 👨‍💻
+Role: Project Lead
+GitHub: [HarshitKumarSingh](https://github.com/harshitsinghcode)
+
+2. Sinchan Shetty 👩‍💻
+GitHub: [SinchanShetty](https://github.com/Sinchancodes)
+
+3. Visnu R 👨‍💻
+GitHub: [VisnuR](https://github.com/Calciumcarbonate321?tab=followers)
+
+4. Sam Shervin S 👨‍💻
+GitHub: [SamShervinS](https://github.com/sam-shervin)
+
+5. Anvesha Singh 👩‍💻
+GitHub: AnveshaSingh
+
+6. Sai Kumar 👨‍💻
+GitHub: [SaiKumar](https://github.com/HarbingerOfTheEnd/smart-india-hackathon)
+
+## Contribution Guidelines 🤝
+We welcome contributions from the community to enhance CaseFlowPro_beta. If you'd like to contribute, please follow these guidelines:
+
+- Fork the repository and create a new branch for your feature or bug fix.
+
+- Make your changes and submit a pull request, clearly describing the changes made and the issue resolved (if applicable).
+
+- Ensure your code follows the project's coding standards and conventions.
+
+## License 📜
+This project is licensed under the MIT License.
