@@ -39,24 +39,17 @@ This is a Next.js project bootstrapped with create-next-app.
 ### Team Chordians 👥
 
 
-1. Harshit Kumar Singh 👨‍💻
-Role: Project Lead
-GitHub: [HarshitKumarSingh](https://github.com/harshitsinghcode)
+1. [HarshitKumarSingh - Project Lead 👨‍💻](https://github.com/harshitsinghcode)
+      
+2. [SinchanShetty 👩‍💻](https://github.com/Sinchancodes)
 
-2. Sinchan Shetty 👩‍💻
-GitHub: [SinchanShetty](https://github.com/Sinchancodes)
+3. [VisnuR 👨‍💻](https://github.com/Calciumcarbonate321?tab=followers)
 
-3. Visnu R 👨‍💻
-GitHub: [VisnuR](https://github.com/Calciumcarbonate321?tab=followers)
-
-4. Sam Shervin S 👨‍💻
-GitHub: [SamShervinS](https://github.com/sam-shervin)
+4. [SamShervinS 👨‍💻](https://github.com/sam-shervin)
 
 5. Anvesha Singh 👩‍💻
-GitHub: AnveshaSingh
 
-6. Sai Kumar 👨‍💻
-GitHub: [SaiKumar](https://github.com/HarbingerOfTheEnd/smart-india-hackathon)
+6. [SaiKumar 👨‍💻](https://github.com/HarbingerOfTheEnd/smart-india-hackathon)
 
 ## Contribution Guidelines 🤝
 We welcome contributions from the community to enhance CaseFlowPro_beta. If you'd like to contribute, please follow these guidelines:
